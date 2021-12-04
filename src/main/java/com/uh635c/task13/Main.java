@@ -4,8 +4,10 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
+        View view = new View();
+        view.startApplication();
 
-        LabelRepository labelRepository = new LabelRepository();
+        /*LabelRepository labelRepository = new LabelRepository();
 
         //get all Label objects
         List<Label> list = labelRepository.getAll();
@@ -41,6 +43,6 @@ public class Main {
         list.stream().forEach(System.out::println);
 
         //exit with uploading all Labels to the Label.json file
-        labelRepository.exit();
+        labelRepository.exit();*/
     }
 }

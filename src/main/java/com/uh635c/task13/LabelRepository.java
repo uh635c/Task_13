@@ -6,10 +6,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.*;
 import java.lang.reflect.*;
 import java.util.*;
-import java.util.stream.*;
 
 public class LabelRepository {
-    private List<Label> ll = new ArrayList<>();
+    public List<Label> ll;
     private Long id;
 
     public LabelRepository() {
@@ -38,8 +37,6 @@ public class LabelRepository {
 
             listLabels = new Gson().fromJson(strFromFile, targetClassType);
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -52,8 +49,6 @@ public class LabelRepository {
                 new OutputStreamWriter(
                         new FileOutputStream("src/main/resources/Label.json")))){
             br.write(jsonList);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -98,8 +93,9 @@ public class LabelRepository {
         while(iterator.hasNext()){
             if(iterator.next().getId().equals(id)){
                 iterator.remove();
+                return;
             }
-            return;
+
         }
         throw new RuntimeException("There is no such Label to delete.");
     }
