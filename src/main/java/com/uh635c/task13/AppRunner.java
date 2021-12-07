@@ -1,10 +1,10 @@
 package com.uh635c.task13;
 
-import java.util.*;
+import com.uh635c.task13.view.LabelView;
 
-public class Main {
+public class AppRunner {
     public static void main(String[] args) {
-        View view = new View();
+        LabelView view = new LabelView();
         view.startApplication();
 
         /*LabelRepository labelRepository = new LabelRepository();
@@ -42,7 +42,7 @@ public class Main {
         list = labelRepository.getAll();
         list.stream().forEach(System.out::println);
 
-        //exit with uploading all Labels to the Label.json file
+        //exit with uploading all Labels to the labels.json file
         labelRepository.exit();*/
     }
 }

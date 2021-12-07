@@ -1,4 +1,4 @@
-package com.uh635c.task13;
+package com.uh635c.task13.model;
 
 public class Label {
     private Long id;

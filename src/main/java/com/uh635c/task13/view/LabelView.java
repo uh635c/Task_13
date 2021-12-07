@@ -1,24 +1,19 @@
-package com.uh635c.task13;
+package com.uh635c.task13.view;
+
+import com.uh635c.task13.controller.LabelController;
+import com.uh635c.task13.model.Label;
 
 import java.util.*;
 
-public class View {
-    Controller controller = new Controller();
-    Scanner userInput = new Scanner(System.in);
+public class LabelView {
+    private final LabelController controller = new LabelController();
+    private final Scanner userInput = new Scanner(System.in);
 
-
-    /*private void showStringConsole(String str){
-        System.out.println(str + "\r\n");
-    }*/
     private void showAllLabels(){
         System.out.println();
         controller.getAll().stream().forEach(System.out::println);
         System.out.println();
         System.out.print("action: ");
-    }
-
-    private void exit(){
-        controller.labelRepository.exit();
     }
 
     private Label toClearLabel(Label label){
@@ -28,7 +23,7 @@ public class View {
     }
 
     public void startApplication(){
-        Label label = new Label();
+
         boolean exit = false;
 
         System.out.print("Enter the required action. For example:\n" +
@@ -39,27 +34,22 @@ public class View {
 
         showAllLabels();
 
-
-
         while(userInput.hasNext()){
 
             switch(userInput.next()){
                 case "update":
                     System.out.print("Enter ID of the required Label: ");
-                    label.setId(userInput.nextLong());
+                    Long id = userInput.nextLong();
                     System.out.print("Enter a new NAME of the required Label: ");
-                    label.setName(userInput.next());
-                    controller.update(label);
+                    String nameUpdate = userInput.next();
+                    controller.update(id, nameUpdate);
                     showAllLabels();
-                    toClearLabel(label);
                     break;
                 case "save":
-                    label.setId(0L);
                     System.out.print("Enter a NAME of a new Label: ");
-                    label.setName(userInput.next());
-                    controller.save(label);
+                    String nameSave = userInput.next();
+                    controller.save(nameSave);
                     showAllLabels();
-                    toClearLabel(label);
                     break;
                 case "delete":
                     System.out.print("Enter ID of the required Label to delete: ");
@@ -67,7 +57,6 @@ public class View {
                     showAllLabels();
                     break;
                 case "exit":
-                    exit();
                     return;
                 default:
                     System.out.println("Unknown command, try again");
