@@ -1,14 +1,17 @@
 package com.uh635c.task13.model;
 
-public class Label {
-    private Long id;
-    private String name;
+import java.util.List;
+
+public class Writer {
+    Long id;
+    String name;
+    List<Post> posts;
 
     public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -20,11 +23,21 @@ public class Label {
         this.name = name;
     }
 
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
     @Override
     public String toString() {
-        return "Label{" +
+        return "Writer{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
     }
+
+
 }

@@ -9,13 +9,6 @@ import java.util.*;
 public class LabelController {
     LabelRepository gsonLabelRepositoryImpl = new GsonLabelRepositoryImpl();
 
-    private Label copyLabel(Label label){
-        Label copyLabel = new Label();
-        copyLabel.setId(label.getId());
-        copyLabel.setName(label.getName());
-        return copyLabel;
-    }
-
     public List<Label> getAll(){
         return Collections.unmodifiableList(gsonLabelRepositoryImpl.getAll());
     }
@@ -30,14 +23,14 @@ public class LabelController {
         return gsonLabelRepositoryImpl.save(label);
     }
 
-    public Label update(Long id, String name){
+    public Label update(String id, String name){
         Label label = new Label();
-        label.setId(id);
+        label.setId(Long.parseLong(id));
         label.setName(name);
         return gsonLabelRepositoryImpl.update(label);
     }
 
-    public void delete(Long id){
-        gsonLabelRepositoryImpl.deleteById(id);
+    public void delete(String id){
+        gsonLabelRepositoryImpl.deleteById(Long.parseLong(id));
     }
 }

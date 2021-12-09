@@ -16,21 +16,13 @@ public class LabelView {
         System.out.print("action: ");
     }
 
-    private Label toClearLabel(Label label){
-        label.setId(0L);
-        label.setName(null);
-        return label;
-    }
-
     public void startApplication(){
 
-        boolean exit = false;
-
-        System.out.print("Enter the required action. For example:\n" +
-                "    delete - for deleting Label,\n" +
-                "    save - for saving Label\n" +
-                "    update - for updating Label\n" +
-                "    exit - for exit from application\n");
+        System.out.print("Enter the required action:\n" +
+                "    delete - to delete a Label,\n" +
+                "    save - to save a Label\n" +
+                "    update - to update a Label\n" +
+                "    exit - to exit from the application\n");
 
         showAllLabels();
 
@@ -39,7 +31,7 @@ public class LabelView {
             switch(userInput.next()){
                 case "update":
                     System.out.print("Enter ID of the required Label: ");
-                    Long id = userInput.nextLong();
+                    String id = userInput.next();
                     System.out.print("Enter a new NAME of the required Label: ");
                     String nameUpdate = userInput.next();
                     controller.update(id, nameUpdate);
@@ -53,7 +45,7 @@ public class LabelView {
                     break;
                 case "delete":
                     System.out.print("Enter ID of the required Label to delete: ");
-                    controller.delete(userInput.nextLong());
+                    controller.delete(userInput.next());
                     showAllLabels();
                     break;
                 case "exit":

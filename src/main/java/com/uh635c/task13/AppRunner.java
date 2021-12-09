@@ -1,11 +1,18 @@
 package com.uh635c.task13;
 
 import com.uh635c.task13.view.LabelView;
+import com.uh635c.task13.view.WriterView;
 
 public class AppRunner {
     public static void main(String[] args) {
-        LabelView view = new LabelView();
-        view.startApplication();
+
+        WriterView writerView = new WriterView();
+        writerView.startApplication();
+
+
+
+        /*LabelView view = new LabelView();
+        view.startApplication();*/
 
         /*LabelRepository labelRepository = new LabelRepository();
 
